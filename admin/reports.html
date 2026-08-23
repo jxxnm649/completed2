@@ -28,10 +28,15 @@
         <button class="bf-admin-nav-item" onclick="location.href='users.html'">👥<span>Users</span></button>
         <button class="bf-admin-nav-item" onclick="location.href='products.html'">📦<span>Products</span></button>
         <button class="bf-admin-nav-item" onclick="location.href='orders.html'">🧾<span>Orders</span></button>
-        <button class="bf-admin-nav-item" onclick="location.href='vendors.html'">🏬<span>Vendors</span></button>
+                <div class="bf-admin-nav-group">
+          <button type="button" class="bf-admin-nav-item bf-admin-nav-group-toggle" onclick="this.closest('.bf-admin-nav-group').classList.toggle('open')">🏬<span>Vendor</span><span class="bf-admin-nav-caret">▾</span></button>
+          <div class="bf-admin-nav-submenu">
+            <button type="button" class="bf-admin-nav-subitem" onclick="location.href='vendors.html'">📋 <span>Applications &amp; Directory</span></button>
+            <button type="button" class="bf-admin-nav-subitem" onclick="location.href='commissions.html'">🧮 <span>Commissions</span></button>
+          </div>
+        </div>
         <button class="bf-admin-nav-item" onclick="location.href='payments.html'">💳<span>Payments</span></button>
         <button class="bf-admin-nav-item" onclick="location.href='wallets.html'">👛<span>Wallets</span></button>
-        <button class="bf-admin-nav-item" onclick="location.href='commissions.html'">🧮<span>Commissions</span></button>
         <button class="bf-admin-nav-item" onclick="location.href='cashback.html'">💸<span>Cashback</span></button>
         <button class="bf-admin-nav-item" onclick="location.href='referrals.html'">🔗<span>Referrals</span></button>
         <button class="bf-admin-nav-item" onclick="location.href='repairs.html'">🔧<span>Repairs</span></button>

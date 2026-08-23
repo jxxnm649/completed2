@@ -314,17 +314,58 @@ function renderNav(claims) {
     claims.permissions &&
     typeof claims.permissions === "object";
 
+  const isAllowed = (item) =>
+    item.permission === null
+      ? true
+      : hasGranularPermissions
+        ? claims.permissions[item.permission] === true
+        : true;
+
+  const vendorsItem = NAV_ITEMS.find(i => i.id === "vendors");
+  const commissionsItem = NAV_ITEMS.find(i => i.id === "commissions");
 
   adminNav.innerHTML =
     NAV_ITEMS.map(item => {
 
-      const allowed =
-        item.permission === null
-          ? true
-          : hasGranularPermissions
-            ? claims.permissions[item.permission] === true
-            : true;
+      // "vendors" and "commissions" are rendered together as one
+      // collapsible "Vendor" group instead of two flat items.
+      if (item.id === "commissions") return "";
 
+      if (item.id === "vendors") {
+
+        if (!isAllowed(vendorsItem) && !isAllowed(commissionsItem)) return "";
+
+        const currentPage = "index.html";
+        const groupOpen = false; // dashboard is never vendors.html/commissions.html itself
+
+        return `
+          <div class="bf-admin-nav-group${groupOpen ? " open" : ""}">
+            <button
+              type="button"
+              class="bf-admin-nav-item bf-admin-nav-group-toggle"
+              data-nav-toggle="vendor-group">
+              <span class="bf-admin-nav-icon">🏬</span>
+              <span>Vendor</span>
+              <span class="bf-admin-nav-caret">▾</span>
+            </button>
+            <div class="bf-admin-nav-submenu">
+              ${isAllowed(vendorsItem) ? `
+                <button type="button" class="bf-admin-nav-subitem" data-nav="vendors">
+                  📋 <span>Applications &amp; Directory</span>
+                </button>
+              ` : ""}
+              ${isAllowed(commissionsItem) ? `
+                <button type="button" class="bf-admin-nav-subitem" data-nav="commissions">
+                  🧮 <span>Commissions</span>
+                </button>
+              ` : ""}
+            </div>
+          </div>
+        `;
+
+      }
+
+      const allowed = isAllowed(item);
 
       if (!allowed) {
         return "";
@@ -698,9 +739,19 @@ adminNav.addEventListener(
   "click",
   e => {
 
+    const toggleBtn =
+      e.target.closest(
+        "[data-nav-toggle]"
+      );
+
+    if (toggleBtn) {
+      toggleBtn.closest(".bf-admin-nav-group").classList.toggle("open");
+      return;
+    }
+
     const btn =
       e.target.closest(
-        ".bf-admin-nav-item"
+        ".bf-admin-nav-item, .bf-admin-nav-subitem"
       );
 
 

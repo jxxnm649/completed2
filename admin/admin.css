@@ -142,6 +142,47 @@ html, body.bf-admin-body{
   cursor: default;
   opacity: .4;
 }
+
+/* ---------- Vendor nav group (collapsible submenu) ---------- */
+.bf-admin-nav-group{ display: flex; flex-direction: column; }
+.bf-admin-nav-group-toggle{ position: relative; }
+.bf-admin-nav-caret{
+  margin-left: auto;
+  font-size: 11px;
+  transition: transform .15s;
+}
+.bf-admin-nav-group.open .bf-admin-nav-caret{ transform: rotate(180deg); }
+.bf-admin-nav-submenu{
+  display: none;
+  flex-direction: column;
+  padding-left: 14px;
+  margin: 2px 0 4px;
+}
+.bf-admin-nav-group.open .bf-admin-nav-submenu{ display: flex; }
+.bf-admin-nav-subitem{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  min-height: 38px;
+  border-radius: var(--radius-sm, 8px);
+  color: var(--paper, #FBF7F0);
+  opacity: .72;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-body, sans-serif);
+}
+.bf-admin-nav-subitem:hover{ background: rgba(251,247,240,.08); opacity: 1; }
+.bf-admin-nav-subitem.bf-admin-nav-subitem-active{
+  background: rgba(242,169,59,.18);
+  color: var(--marigold, #F2A93B);
+  opacity: 1;
+  font-weight: 600;
+}
 .bf-admin-nav-soon{
   margin-left: auto;
   font-size: 10px;
