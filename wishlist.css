@@ -1,0 +1,20 @@
+#wishlistItems{
+    padding: 20px;
+}
+
+.move-btn{
+    background: var(--leaf);
+    color: #fff;
+}
+.move-btn:hover{
+    background: #256640;
+}
+
+.remove-btn{
+    background: var(--rust-bg);
+    color: var(--rust);
+}
+.remove-btn:hover{
+    background: var(--rust);
+    color: #fff;
+}

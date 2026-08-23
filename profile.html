@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+
+  <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bf-has-nav">
+
+<div class="container profile-container">
+
+<h1>My Profile 👤</h1>
+
+<form id="profileForm" class="checkout-form">
+
+  <label for="name">Full Name</label>
+  <input
+    type="text"
+    id="name"
+    placeholder="Your full name"
+    required
+  >
+
+  <label for="email">Email</label>
+  <input
+    type="email"
+    id="email"
+    disabled
+  >
+
+  <label for="mobile">Mobile Number</label>
+  <input
+    type="text"
+    id="mobile"
+    placeholder="10-digit mobile number"
+  >
+
+  <label for="address">Address</label>
+  <textarea
+    id="address"
+    placeholder="House no, street, area, city, pincode"
+  ></textarea>
+
+  <button type="submit">
+    Save Profile
+  </button>
+
+</form>
+
+<div class="profile-links" style="margin-top:18px;display:flex;flex-direction:column;gap:10px;">
+  <a href="transactions.html" style="text-decoration:none;">
+    <button type="button" style="width:100%;">🧾 My Transactions</button>
+  </a>
+  <button type="button" id="logoutBtn" style="width:100%;background:#c62828;color:#fff;">
+    🚪 Logout
+  </button>
+</div>
+
+</div>
+
+<nav class="bottom-nav">
+  <a href="home.html"><span>🏠</span><p>Home</p></a>
+  <a href="wishlist.html"><span>❤️</span><p>Wishlist</p></a>
+  <a href="orders.html"><span>📦</span><p>Orders</p></a>
+  <a href="profile.html" class="active"><span>👤</span><p>Profile</p></a>
+  <button type="button" id="moreMenuBtn" class="bottom-nav-more"><span>☰</span><p>More</p></button>
+</nav>
+
+<script type="module" src="profile.js"></script>
+<script type="module" src="profile-menu.js"></script>
+
+</body>
+</html>
